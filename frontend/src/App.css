@@ -1,0 +1,48 @@
+/* body{
+    overflow-x: hidden;
+} */
+
+#supportHero {
+    background-color: rgb(56, 126, 209);
+    color: white;
+}
+
+#supportHero a{
+    color: white;
+    font-size: 13px;
+    padding: 0;
+}
+
+#supportWrapper{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    /* margin: 0 100px; */
+    padding: 0 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+#supportHero input{
+    padding: 10px 14px;
+    border-radius: 6px;
+    border:none;
+    outline: none;
+    font-size: 15px;
+    width: 100%;
+    max-width: 420px;
+}
+
+#supportWrapper h6{
+    margin-bottom: 4px;
+}
+
+@media(max-width: 768px){
+    #supportWrapper{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+
+
