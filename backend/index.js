@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const {holdingsModel} = require("./modals/holdingsModel");
@@ -14,10 +14,13 @@ require("./modals/db")
 
 const app = express();
 app.use(cors({
-    origin: true,
+    origin: ["https://stock-monitoring-platform-five.vercel.app"],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
 }));
-app.use(bodyParser.json());
+app.options("*", cors());
+app.use(express.json());
+// app.use(bodyParser.json());
 
 
 app.get("/allHolding", async(req, res) => {
