@@ -14,7 +14,7 @@ require("./modals/db")
 
 const app = express();
 app.use(cors({
-    origin: ["https://stock-monitoring-platform-five.vercel.app"],
+    origin: ["https://stock-monitoring-platform-five.vercel.app", "https://dashboard-tau-six-39.vercel.app"],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
 }));
