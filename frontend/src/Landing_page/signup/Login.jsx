@@ -23,12 +23,12 @@ function Login() {
       return handleError(" email, password are required");
     }
     try {
-      const url = "http://localhost:3002/auth/login";
+      const url = "https://backend-red-xi-6bpqvo81h9.vercel.app/auth/login";
       const response = await fetch(url, {
         method: "POST",
         headers: {
           "content-type": "application/json",
-        },
+        }, 
         body: JSON.stringify(loginInfo),
       });
       const result = await response.json();
@@ -40,7 +40,7 @@ function Login() {
         handleSuccess(message);
         localStorage.setItem("token", jwtToken);
         localStorage.setItem("welcome", name);
-        window.location.href = "http://localhost:5174/";
+        window.location.href = "https://dashboard-tau-six-39.vercel.app";
       }
     } catch (err) {
       handleError(err.message);

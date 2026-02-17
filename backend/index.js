@@ -13,7 +13,10 @@ const PORT = process.env.PORT || 3002;
 require("./modals/db")
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: "https://stock-monitoring-platform-five.vercel.app",
+    credentials: true,
+}));
 app.use(bodyParser.json());
 
 

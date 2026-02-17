@@ -25,7 +25,7 @@ const Signup = () => {
       return handleError("name, email, password are required");
     }
     try {
-      const url = "http://localhost:3002/auth/signup";
+      const url = "https://backend-red-xi-6bpqvo81h9.vercel.app/auth/signup";
       const response = await fetch(url, {
         method: "POST",
         headers: {
@@ -40,7 +40,7 @@ const Signup = () => {
       const { success, message } = result;
       if (success) {
         handleSuccess(message);
-        window.location.href = "http://localhost:5174";
+        window.location.href = "https://dashboard-tau-six-39.vercel.app";
       }
     } catch (err) {
       handleError(err.message);
