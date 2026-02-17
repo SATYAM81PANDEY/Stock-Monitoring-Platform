@@ -5,9 +5,9 @@ const Positions = () => {
   const [allPosition, setAllPosition] = useState([]);
 
   useEffect(() => {
-    axios.get("https://backend-red-xi-6bpqvo81h9.vercel.app/allPosition").then((res) => {
-      setAllPosition(res.data)
-    })
+    axios.get("https://backend-red-xi-6bpqvo81h9.vercel.app/allPosition")
+    .then((res) => setAllPosition(res.data))
+    .catch((err) => console.log(err));
   }, [])
   return (
       <>
@@ -17,7 +17,7 @@ const Positions = () => {
             <tr>
             <th>Product</th>
             <th>Instrument</th>
-            <th>Qty.</th>
+            <th>Qty.</th> 
             <th>Avg.</th>
             <th>LTP</th>
             <th>P&L</th>

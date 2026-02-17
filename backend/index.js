@@ -14,7 +14,7 @@ require("./modals/db")
 
 const app = express();
 app.use(cors({
-    origin: "https://stock-monitoring-platform-five.vercel.app",
+    origin: true,
     credentials: true,
 }));
 app.use(bodyParser.json());

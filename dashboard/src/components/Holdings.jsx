@@ -7,14 +7,14 @@ const Holdings = () => {
 
   // here we connet the api
   useEffect(() => {
-    axios.get("https://backend-red-xi-6bpqvo81h9.vercel.app/allHolding").then((res) => {
-      setAllHolding(res.data);
-    })
+    axios.get("https://backend-red-xi-6bpqvo81h9.vercel.app/allHolding")
+    .then((res) => setAllHolding(res.data))
+    .catch((err) => console.log(err));
   }, []);
     
      const labels = allHolding.map((subArra) => subArra["name"]);
     const data = {
-   labels, 
+   labels,  
   datasets: [
      {
        label: 'Stock Price',

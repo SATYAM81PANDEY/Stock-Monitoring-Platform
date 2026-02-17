@@ -6,10 +6,9 @@ const Orders = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    axios.get("https://backend-red-xi-6bpqvo81h9.vercel.app/allOrder").then((res) => {
-      setOrders(res.data);
-    })
-
+    axios.get("https://backend-red-xi-6bpqvo81h9.vercel.app/allOrder")
+    .then((res) => setOrders(res.data))
+    .catch((err) => console.log(err));
   },[])
   return (
       <div className="orders">
