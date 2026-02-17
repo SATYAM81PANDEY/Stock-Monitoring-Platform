@@ -5,7 +5,7 @@ const Positions = () => {
   const [allPosition, setAllPosition] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3002/allPosition").then((res) => {
+    axios.get("https://backend-red-xi-6bpqvo81h9.vercel.app/allPosition").then((res) => {
       setAllPosition(res.data)
     })
   }, [])

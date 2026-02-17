@@ -7,7 +7,7 @@ const Holdings = () => {
 
   // here we connet the api
   useEffect(() => {
-    axios.get("http://localhost:3002/allHolding").then((res) => {
+    axios.get("https://backend-red-xi-6bpqvo81h9.vercel.app/allHolding").then((res) => {
       setAllHolding(res.data);
     })
   }, []);

@@ -12,7 +12,7 @@ const [stockPrice, setStockPrice] = useState(0.0);
 const { closeBuyWindow } = useContext(GeneralContext);
 // here we create buy process
 const handleBuyClick = () => {
-    axios.post("http://localhost:3002/newOrder", {
+    axios.post("https://backend-red-xi-6bpqvo81h9.vercel.app/newOrder", {
         name: uid,
         qty: stockQuantity,
         price: stockPrice,
@@ -26,7 +26,7 @@ const handleBuyClick = () => {
 
 // here we create buy process
 const handleSellClick = () => {
-    axios.post("http://localhost:3002/newOrder", {
+    axios.post("https://backend-red-xi-6bpqvo81h9.vercel.app/newOrder", {
         name: uid,
         qty: stockQuantity,
         price: stockPrice,
