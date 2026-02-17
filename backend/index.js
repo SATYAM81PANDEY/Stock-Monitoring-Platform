@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
-// const bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const {holdingsModel} = require("./modals/holdingsModel");
@@ -13,14 +13,37 @@ const PORT = process.env.PORT || 3002;
 require("./modals/db")
 
 const app = express();
-app.use(cors({
-    origin: ["https://stock-monitoring-platform-five.vercel.app", "https://dashboard-tau-six-39.vercel.app"],
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    credentials: true,
-}));
-app.options("*", cors());
-app.use(express.json());
-// app.use(bodyParser.json());
+
+// app.use(cors({
+//     origin: ["https://stock-monitoring-platform-five.vercel.app", "https://dashboard-tau-six-39.vercel.app"],
+//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//     credentials: true,
+// }));
+
+const allowedOrigin = [
+      "https://stock-monitoring-platform-five.vercel.app",
+      "https://dashboard-tau-six-39.vercel.app"
+];
+
+app.use((req, res, next) => {
+        const origin = req.headers.origin;
+        if(allowedOrigin.includes(origin)){
+          res.setHeader("Access-Control-Allow-Origin", origin)
+        }
+
+         res.setHeader("Access-Control-Allow-Credentials", "true");
+         res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+         res.setHeader("Access-Control-Allow-Headers", "Content-Type,Authorization");
+
+         
+       if (req.method === "OPTIONS") {
+            return res.sendStatus(200);
+       }
+
+       next(); 
+})
+
+app.use(bodyParser.json());
 
 
 app.get("/allHolding", async(req, res) => {
@@ -42,7 +65,7 @@ app.post("/newOrder", async(req, res) => {
        price: req.body.price,
        mode: req.body.mode,
     });
-    newOrder.save();
+     await newOrder.save();
   
     if(req.body.mode === "Buy"){
       let existingHolding = await holdingsModel.findOne({name: req.body.name})
