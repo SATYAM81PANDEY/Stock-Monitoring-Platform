@@ -14,34 +14,36 @@ require("./modals/db")
 
 const app = express();
 
-// app.use(cors({
-//     origin: ["https://stock-monitoring-platform-five.vercel.app", "https://dashboard-tau-six-39.vercel.app"],
-//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-//     credentials: true,
-// }));
+ app.use(cors({
+     origin: [
+          "https://stock-monitoring-platform-five.vercel.app",
+          "https://dashboard-tau-six-39.vercel.app"
+     ],
+     credentials: true
+}));
 
-const allowedOrigin = [
-      "https://stock-monitoring-platform-five.vercel.app",
-      "https://dashboard-tau-six-39.vercel.app"
-];
+// const allowedOrigin = [
+//       "https://stock-monitoring-platform-five.vercel.app",
+//       "https://dashboard-tau-six-39.vercel.app"
+// ];
 
-app.use((req, res, next) => {
-        const origin = req.headers.origin;
-        if(allowedOrigin.includes(origin)){
-          res.setHeader("Access-Control-Allow-Origin", origin)
-        }
+// app.use((req, res, next) => {
+//         const origin = req.headers.origin;
+//         if(allowedOrigin.includes(origin)){
+//           res.setHeader("Access-Control-Allow-Origin", origin)
+//         }
 
-         res.setHeader("Access-Control-Allow-Credentials", "true");
-         res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
-         res.setHeader("Access-Control-Allow-Headers", "Content-Type,Authorization");
+//          res.setHeader("Access-Control-Allow-Credentials", "true");
+//          res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+//          res.setHeader("Access-Control-Allow-Headers", "Content-Type,Authorization");
 
          
-       if (req.method === "OPTIONS") {
-            return res.sendStatus(200);
-       }
+//        if (req.method === "OPTIONS") {
+//             return res.sendStatus(200);
+//        }
 
-       next(); 
-})
+//        next(); 
+// })
 
 app.use(bodyParser.json());
 
