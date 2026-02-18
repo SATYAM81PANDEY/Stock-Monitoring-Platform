@@ -23,28 +23,6 @@ const app = express();
      credentials: true
 }));
 
-// const allowedOrigin = [
-//       "https://stock-monitoring-platform-five.vercel.app",
-//       "https://dashboard-tau-six-39.vercel.app"
-// ];
-
-// app.use((req, res, next) => {
-//         const origin = req.headers.origin;
-//         if(allowedOrigin.includes(origin)){
-//           res.setHeader("Access-Control-Allow-Origin", origin)
-//         }
-
-//          res.setHeader("Access-Control-Allow-Credentials", "true");
-//          res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
-//          res.setHeader("Access-Control-Allow-Headers", "Content-Type,Authorization");
-
-         
-//        if (req.method === "OPTIONS") {
-//             return res.sendStatus(200);
-//        }
-
-//        next(); 
-// })
 
 app.use(bodyParser.json());
 
